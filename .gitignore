@@ -7,6 +7,9 @@ dist/
 *.c
 *.drv
 
+### Stack
+stack.yaml.lock
+
 ### IDE
 .idea/
 *.swp

@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Haskell
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.10.3'
+          cabal-version: '3.12.1.0'
+
+      - name: Configure
+        run: cabal configure --enable-tests --allow-newer-depends
+
+      - name: Build
+        run: cabal build all
+
+      - name: Run tests
+        run: cabal test all
+
+      - name: Check for unused dependencies
+        run: cabal check
+
+  style:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Haskell
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.10.3'
+
+      - name: Install stylish-haskell
+        run: |
+          cabal install stylish-haskell
+          echo "${{ github.workspace }}/.cabal/bin" >> $GITHUB_PATH
+
+      - name: Check formatting
+        run: stylish-haskell --check src test

@@ -1,0 +1,78 @@
+cabal-version: 2.2
+
+name:           haskform
+version:        0.1.0.0
+category:       Infrastructure
+author:         Hannah Harrisonn <hannah@harrisonn.dev>
+maintainer:     Hannah Harrisonn <hannah@harrisonn.dev>
+homepage:       https://github.com/nahharris/haskform
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+
+library
+  exposed-modules:
+      Haskform
+      Haskform.DSL.Core
+      Haskform.DSL.SmartConstructors
+      Haskform.DSL.Interpreters
+      Haskform.Core.State
+      Haskform.Core.Plan
+      Haskform.Provider.Protocol
+      Haskform.Provider.StateStore.Yaml
+  other-modules:
+      Paths_haskform
+  autogen-modules:
+      Paths_haskform
+  hs-source-dirs:
+      src
+  default-extensions:
+      BlockArguments
+      DeriveFunctor
+      DeriveGeneric
+      DuplicateRecordFields
+      ImportQualifiedPost
+      LambdaCase
+      NamedFieldPuns
+      NumericUnderscores
+      OverloadedRecordDot
+      OverloadedStrings
+      RecordWildCards
+      StrictData
+      ViewPatterns
+  build-depends:
+      base >=4.18
+    , aeson >=2.0
+    , hashable
+    , text
+    , unordered-containers
+    , directory
+    , yaml
+    , transformers
+  default-extensions:
+      BlockArguments
+      DerivingStrategies
+      DeriveFunctor
+      DeriveGeneric
+      DuplicateRecordFields
+      ImportQualifiedPost
+      LambdaCase
+      NamedFieldPuns
+      NumericUnderscores
+      OverloadedRecordDot
+      OverloadedStrings
+      RecordWildCards
+      StrictData
+      ViewPatterns
+  default-language: GHC2021
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  build-depends:
+      base >=4.18
+    , haskform
+    , hspec >=2.11
+  default-language: GHC2021

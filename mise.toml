@@ -1,0 +1,23 @@
+[settings]
+tools = ["stack"]
+
+[tasks.build]
+run = "stack build"
+
+[tasks.test]
+run = "stack test"
+
+[tasks.lint]
+run = "stack exec -- hlint src test"
+
+[tasks.format]
+run = "stack exec -- stylish-haskell --inplace src test"
+
+[tasks.ci]
+run = "stack build && stack test && stack exec -- hlint src test"
+
+[tasks.watch]
+run = "stack build --file-watch"
+
+[tasks.setup]
+run = "stack setup"
