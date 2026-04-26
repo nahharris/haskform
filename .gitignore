@@ -1,0 +1,30 @@
+### Haskell
+.stack-work/
+dist/
+*.o
+*.hi
+*.chs
+*.c
+*.drv
+
+### IDE
+.idea/
+*.swp
+*.swo
+*~
+
+### Build artifacts
+cabal-dev/
+*.-prof
+*.aux
+*.hp
+.ps
+*.log
+
+### OS
+.DS_Store
+Thumbs.db
+
+### Local state
+.haskform-state.yaml
+.state.hcl
